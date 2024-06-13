@@ -6,7 +6,7 @@ export const CryptoContext = createContext({});
 //create provider component
 export const CryptoProvider = ({ children }) => {
   const [cryptoData, setCryptoData] = useState();
-  const [searchData, setSearchData];
+  const [searchData, setSearchData]= useState();
 
   const getCryptoData = async () => {
     try {

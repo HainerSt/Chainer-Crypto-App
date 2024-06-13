@@ -14,7 +14,9 @@ export const CryptoProvider = ({ children }) => {
       )
         .then((res) => res.json())
         .then((json) => json);
+
       console.log(data);
+      setCryptoData(data);
     } catch (error) {
       console.log(error);
     }
@@ -24,5 +26,5 @@ export const CryptoProvider = ({ children }) => {
     getCryptoData();
   }, []);
 
-  return <CryptoContext.Provider value={{}}>{children}</CryptoContext.Provider>;
+  return <CryptoContext.Provider value={{cryptoData}}>{children}</CryptoContext.Provider>;
 };

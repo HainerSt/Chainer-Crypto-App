@@ -60,7 +60,7 @@ const Filters = () => {
         </label>
         <button
           onClick={resetFunc}
-          className="w-[2rem] ml-4 hover:scale-110 transition-all transition-ease absolute right-0 top-0"
+          className="w-[2rem] ml-4 hover:scale-110 transition-all transition-ease relative right-0 top-0"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"

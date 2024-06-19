@@ -7,27 +7,43 @@ export const CryptoContext = createContext({});
 export const CryptoProvider = ({ children }) => {
   const [cryptoData, setCryptoData] = useState();
   const [searchData, setSearchData] = useState();
+  const [coinsData, setCoinsData] = useState();
   const [coinSearch, setCoinSearch] = useState("");
   const [currency, setCurrency] = useState("usd");
   const [sortBy, setSortBy] = useState("market_cap_desc");
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(250);
-  const [perPage, setPerPage]= useState(10);
+  const [perPage, setPerPage] = useState(10);
 
-  const getCoinData = async () => {
+  const getCoinsData = async (coinid) => {
     try {
       const data = await fetch(
-        `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=10&price_change_percentage=1h%2C24h%2C7d`
+        `https://api.coingecko.com/api/v3/coins/${coinid}?localization=false&tickers=false&market_data=true&comunity_data=false&developer_data=true&sparkline=false`
       )
         .then((res) => res.json())
         .then((json) => json);
 
       console.log(data);
-      setCryptoData(data);
+      setCoinsData(data);
     } catch (error) {
       console.log(error);
     }
   };
+
+  // const getCoinData = async () => {
+  //   try {
+  //     const data = await fetch(
+  //       `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=10&price_change_percentage=1h%2C24h%2C7d`
+  //     )
+  //       .then((res) => res.json())
+  //       .then((json) => json);
+
+  //     console.log(data);
+  //     setCryptoData(data);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
   const getCryptoData = async () => {
     try {
@@ -36,7 +52,7 @@ export const CryptoProvider = ({ children }) => {
         .then((json) => json);
 
       // console.log(data);
-      setTotalPages(data.length);
+      setTotalPages(data);
     } catch (error) {
       console.log(error);
     }
@@ -94,7 +110,10 @@ export const CryptoProvider = ({ children }) => {
         totalPages,
         setTotalPages,
         resetFunc,
-        setPerPage, perPage
+        setPerPage,
+        perPage,
+        getCoinsData,
+        coinsData,
       }}
     >
       {children}

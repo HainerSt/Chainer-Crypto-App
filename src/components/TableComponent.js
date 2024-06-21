@@ -65,7 +65,7 @@ const TableComponent = () => {
                     </td>
                     <td className="py-4">
                       <Link to={`/${data.id}`} className="cursor-pointer">
-                      {data.name}
+                        {data.name}
                       </Link>
                     </td>
                     <td className="py-4">

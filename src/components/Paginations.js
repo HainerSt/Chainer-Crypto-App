@@ -31,7 +31,7 @@ const PerPage = () => {
         max={250}
       />
       <button type="submit" className="ml-1 cursor-pointer">
-        <img src={submitIcon} className="w-full h-auto" />
+        <img src={submitIcon} className="w-full h-auto" alt="submit"/>
       </button>
     </form>
   );
@@ -129,7 +129,6 @@ const Paginations = () => {
               </button>
             </li>
           ) : null}
-
           {page !== TotalNumber ? (
             <li>
               <button

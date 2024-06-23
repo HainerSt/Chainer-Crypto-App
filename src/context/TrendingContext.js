@@ -11,6 +11,7 @@ export const TrendingProvider = ({ children }) => {
         .then((res) => res.json())
         .then((json) => json);
 
+      console.log(data.coins);
       setTrendData(data.coins);
     } catch (error) {
       console.log(error);
@@ -22,10 +23,8 @@ export const TrendingProvider = ({ children }) => {
   };
 
   useLayoutEffect(() => {
-   getTrendData()
+    getTrendData();
   }, []);
 
-  return <TrendingContext.Provider value={{trendData, resetTrendingRes}}>{children}</TrendingContext.Provider>;
+  return <TrendingContext.Provider value={{ trendData, resetTrendingRes }}>{children}</TrendingContext.Provider>;
 };
-
-///added pagination features + page reset button

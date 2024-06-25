@@ -46,29 +46,30 @@ export const CryptoProvider = ({ children }) => {
   // };
 
   const getCryptoData = async () => {
-    try {
-      const data = await fetch(`https://api.coingecko.com/api/v3/coins/list`)
-        .then((res) => res.json())
-        .then((json) => json);
+    setTotalPages(13220)
+    // try {
+    //   const data = await fetch(`https://api.coingecko.com/api/v3/coins/list`)
+    //     .then((res) => res.json())
+    //     .then((json) => json);
 
-      // console.log(data);
-      setTotalPages(data);
-    } catch (error) {
-      console.log(error);
-    }
+    //   // console.log(data);
+    //   setTotalPages(data);
+    // } catch (error) {
+    //   console.log(error);
+    // }
 
-    try {
-      const data = await fetch(
-        `https://api.coingecko.com/api/v3/coins/markets?vs_currency=${currency}&ids=${coinSearch}&order=${sortBy}&per_page=${perPage}&page=${page}&price_change_percentage=1h%2C24h%2C7d`
-      )
-        .then((res) => res.json())
-        .then((json) => json);
+    // try {
+    //   const data = await fetch(
+    //     `https://api.coingecko.com/api/v3/coins/markets?vs_currency=${currency}&ids=${coinSearch}&order=${sortBy}&per_page=${perPage}&page=${page}&price_change_percentage=1h%2C24h%2C7d`
+    //   )
+    //     .then((res) => res.json())
+    //     .then((json) => json);
 
-      console.log(data);
-      setCryptoData(data);
-    } catch (error) {
-      console.log(error);
-    }
+    //   console.log(data);
+    //   setCryptoData(data);
+    // } catch (error) {
+    //   console.log(error);
+    // }
   };
 
   const getSearchResult = async (query) => {

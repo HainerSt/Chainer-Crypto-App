@@ -5,15 +5,15 @@ import { Link } from "react-router-dom";
 import { StorageContext } from "../context/StorageContext";
 
 const SaveBtn = ({ data }) => {
-  const { saveCoin, allCoins,removeCoin } = useContext(StorageContext);
+  const { saveCoin, allCoins, removeCoin } = useContext(StorageContext);
 
   const handleClick = (e) => {
     e.preventDefault();
     saveCoin(data.id);
 
-    if(allCoins.includes(data.id)){
+    if (allCoins.includes(data.id)) {
       removeCoin(data.id);
-    }else{
+    } else {
       saveCoin(data.id);
     }
   };
@@ -123,7 +123,12 @@ const TableComponent = () => {
               })}
             </tbody>
           </table>
-        ) : null}
+        ) : (
+          <div className="w-full min-h-[60vh] h-full flex justify-center items-center">
+            <div className="w-8 h-8 border-4 border-cyan rounded-full border-b-gray-200 animate-spin" role="status" />
+            <span className="ml-2">Please wait...</span>
+          </div>
+        )}
       </div>
       <div className="flex items-center justify-between mt-4 capitalize h-[2rem]">
         <span>

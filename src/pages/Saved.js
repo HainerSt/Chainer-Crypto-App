@@ -53,7 +53,7 @@ const Saved = () => {
   return (
     <section className="w-[80%] h-full flex flex-col mt-16 mb-24 relative">
       <div className="w-full min-h-[60vh] py-8 border border-gray-100 rounded">
-        {savedData && (
+        {savedData ? (
           <table>
             <thead
               className="capitalize text-base text-gray-100
@@ -118,8 +118,9 @@ const Saved = () => {
                 );
               })}
             </tbody>
-          </table>
-        )}
+          </table>) :
+          <h1 className="min-h-[60vh] text-lg text-cyan flex items-center justify-center">No data</h1>
+        }
 
         <button
           //  Reset

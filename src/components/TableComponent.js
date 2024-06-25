@@ -69,9 +69,9 @@ const TableComponent = () => {
                 <th className=" py-1">price</th>
                 <th className=" py-1">total volume</th>
                 <th className=" py-1">market cap change</th>
-                <th className=" py-1">1h</th>
-                <th className=" py-1">24H</th>
-                <th className=" py-1">7D</th>
+                <th className=" py-1 lg:table-cell hidden">1h</th>
+                <th className=" py-1 lg:table-cell hidden">24H</th>
+                <th className=" py-1 lg:table-cell hidden">7D</th>
               </tr>
             </thead>
             <tbody>
@@ -104,17 +104,29 @@ const TableComponent = () => {
                     <td className="py-4">{data.total_volume}</td>
                     <td className="py-4">{data.market_cap_change_percentage_24h}%</td>
                     <td
-                      className={data.price_change_percentage_1h_in_currency > 0 ? "text-green py-4" : "text-red py-4"}
+                      className={
+                        data.price_change_percentage_1h_in_currency > 0
+                          ? "text-green py-4 lg:table-cell hidden"
+                          : "text-red py-4 lg:table-cell hidden"
+                      }
                     >
                       {Number(data.price_change_percentage_1h_in_currency).toFixed(2)}
                     </td>
                     <td
-                      className={data.price_change_percentage_24h_in_currency > 0 ? "text-green py-4" : "text-red py-4"}
+                      className={
+                        data.price_change_percentage_24h_in_currency > 0
+                          ? "text-green py-4 lg:table-cell hidden"
+                          : "text-red py-4 lg:table-cell hidden"
+                      }
                     >
                       {Number(data.price_change_percentage_24h_in_currency).toFixed(2)}
                     </td>
                     <td
-                      className={data.price_change_percentage_7d_in_currency > 0 ? "text-green py-4" : "text-red py-4"}
+                      className={
+                        data.price_change_percentage_7d_in_currency > 0
+                          ? "text-green py-4 lg:table-cell hidden"
+                          : "text-red py-4 lg:table-cell hidden"
+                      }
                     >
                       {Number(data.price_change_percentage_7d_in_currency).toFixed(2)}
                     </td>

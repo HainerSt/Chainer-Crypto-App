@@ -16,8 +16,8 @@ const TrendingCoin = ({ data }) => {
       className="w-[40%] bg-gray-200 mb-12 last:mb-0 rounded-lg p-4 relative cursor-pointer hover:bg-gray-100 hover:bg-opacity-40"
     >
       {data ? (
-        <div className="i">
-          <h3 className="text-base md:text-sm flex flex-row items-center my-0.5">
+        <div>
+          <h3 className="text-base md:text-sm  flex flex-row items-center my-0.5">
             <span className="text-gray-100 capitalize">name: &nbsp; </span>
             <span className="text-cyan capitalize md:text-base lg:text-lg">{data.name}</span>
           </h3>

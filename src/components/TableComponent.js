@@ -57,7 +57,7 @@ const TableComponent = () => {
       flex flex-col mt-9 border border-gray-100 rounded
   "
       >
-        {cryptoData ? (
+        {cryptoData && (
           <table>
             <thead
               className="capitalize text-base text-gray-100
@@ -135,12 +135,15 @@ const TableComponent = () => {
               })}
             </tbody>
           </table>
-        ) : (
-          <div className="w-full min-h-[60vh] h-full flex justify-center items-center">
-            <div className="w-8 h-8 border-4 border-cyan rounded-full border-b-gray-200 animate-spin" role="status" />
-            <span className="ml-2">Please wait...</span>
-          </div>
-        )}
+        ) 
+        // : (
+        //   <div className="w-full min-h-[60vh] h-full flex justify-center items-center">
+        //     <div className="w-8 h-8 border-4 border-cyan rounded-full border-b-gray-200 animate-spin" role="status" />
+        //     <span className="ml-2">Please wait...</span>
+        //   </div>
+        // )
+        
+        }
       </div>
       <div className="flex items-center justify-between mt-4 capitalize h-[2rem] text-sm">
         <span>

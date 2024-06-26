@@ -18,7 +18,11 @@ const Home = () => {
               to="/"
               className="absolute top-[1.5rem] left-[1.5rem] [text-decoration:none] text-lg text-cyan flex items-center"
             >
-              <span>Chainer</span>
+              
+              <span>&#x20a1;hainer</span>
+             
+                
+              
             </Link>
 
             <Navigation />

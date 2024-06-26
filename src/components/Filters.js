@@ -23,11 +23,10 @@ const Filters = () => {
   return (
     <div
       className="
-    sm:py-3
-    lg:py-1
+    py-1
     px-2
     text-sm md:text-base lg:text-large 
-    w-full xs:h-30 
+    w-full h-30 
     border-2
   border-gray-100
     rounded-lg  
@@ -40,7 +39,7 @@ const Filters = () => {
     relative"
     >
       <Search />
-      <div className="flex flex-wrap justify-start pb-3 md:pb-0">
+      <div className="flex flex-wrap justify-center pb-3 ">
         <form
           onSubmit={handleCurrencySubmit}
           className="

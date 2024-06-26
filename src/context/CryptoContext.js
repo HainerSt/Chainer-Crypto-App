@@ -108,4 +108,3 @@ export const CryptoProvider = ({ children }) => {
   );
 };
 
-///added pagination features + page reset button

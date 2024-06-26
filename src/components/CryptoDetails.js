@@ -41,11 +41,11 @@ const CryptoDetails = () => {
 
   return ReactDOM.createPortal(
     <div
-      className="fixed top-0 w-full h-full bg-gray-200 bg-opacity-30 backdrop-blur-sm flex items-center justify-center font-nunito"
+      className="fixed top-0 w-full h-full bg-gray-200 bg-opacity-40 backdrop-blur-sm flex items-center justify-center font-nunito"
       onClick={close}
     >
       <div
-        className="w-[65%] h-[75%] bg-gray-300 bg-opacity-75 rounded-lg text-white relative"
+        className="w-[90%] md:w-[65%] md:h-[75%] bg-gray-300 bg-opacity-75 rounded-lg text-white relative"
         onClick={(e) => {
           e.stopPropagation();
         }}
@@ -56,7 +56,7 @@ const CryptoDetails = () => {
               <div className="flex w-full items-center">
                 <img className="w-[3rem] h-[3rem] mx-1.5" src={data.image.large} alt={data.id}></img>
                 <h1 className="text-xl capitalize font-medium">{data.name}</h1>
-                <span className="text-sm py-0.5 px-2.5 ml-2 bg-cyan text-cyan bg-opacity-25 rounded uppercase">
+                <span className=" md:text-sm py-0.5 px-2.5 ml-2 bg-cyan text-cyan bg-opacity-25 rounded uppercase">
                   {data.symbol}
                 </span>
               </div>
@@ -95,7 +95,7 @@ const CryptoDetails = () => {
 
               <div className="flex w-full mt-4 justify-between">
                 <div className="flex flex-col">
-                  <span className="text-sm capitalize text-gray-100">Market Cap</span>
+                  <span className=" text-sm capitalize text-gray-100">Market Cap</span>
                   <h2>
                     {new Intl.NumberFormat("en-US", {
                       style: "currency",
@@ -106,7 +106,7 @@ const CryptoDetails = () => {
                   </h2>
                 </div>
                 <div>
-                  <div className="flex flex-col">
+                  <div className="flex flex-col ml-3 md:ml-0 ">
                     <span className="text-sm capitalize text-gray-100">Fully diluted valuation</span>
                     <h2 className="text-base font-bold">
                       {new Intl.NumberFormat("en-US", {
@@ -130,7 +130,7 @@ const CryptoDetails = () => {
                 </h2>
               </div>
 
-              <div className="flex w-full mt-4 justify-between">
+              <div className="flex flex-wrap w-full mt-4 justify-between text-sm md:text-base">
                 <HLIndicator
                   currentPrice={data.market_data.current_price[currency]}
                   high={data.market_data.high_24h[currency]}
@@ -138,7 +138,7 @@ const CryptoDetails = () => {
                 />
               </div>
 
-              <div className="flex w-full mt-4 justify-between">
+              <div className="block md:flex w-full mt-4 justify-between">
                 <div className="flex flex-col">
                   <span className="text-sm capitalize text-gray-100">Low 24h</span>
                   <h2>
@@ -163,7 +163,7 @@ const CryptoDetails = () => {
                 </div>
               </div>
 
-              <div className="flex w-full mt-4 justify-between">
+              <div className="block md:flex w-full mt-4 justify-between">
                 <div className="flex flex-col">
                   <span className="text-sm capitalize text-gray-100">Max Supply</span>
                   <h2>
@@ -171,6 +171,7 @@ const CryptoDetails = () => {
                       style: "currency",
                       currency: currency,
                       minimumFractionDigits: 0,
+                      notation: "compact",
                     }).format(data.market_data.max_supply)}
                   </h2>
                 </div>
@@ -188,7 +189,7 @@ const CryptoDetails = () => {
                 </div>
               </div>
 
-              <div className=" flex  w-full mt-4 justify-between">
+              <div className=" block md:flex  w-full mt-4 justify-between">
                 <div className="flex flex-col">
                   <a
                     className="text-sm bg-gray-200 text-gray-100 px-1.5 py-0.5 my-1 rounded"
@@ -262,7 +263,7 @@ const CryptoDetails = () => {
                   <span className="text-gray-100 capitalize mr-1 mx-5 my-5">Market cap rank:</span>
                   {data.market_cap_rank}
                 </h3>
-                <h3 className="text-white py-1">
+                <h3 className="text-white py-1 text-sm md:text-base ">
                   <span className="text-gray-100 capitalize mr-1 mx-5 my-5">All time high:</span>
                   {new Intl.NumberFormat("en-US", {
                     style: "currency",
@@ -270,8 +271,8 @@ const CryptoDetails = () => {
                     maximumSignificantDigits: 5,
                   }).format(data.market_data.ath[currency])}
                 </h3>
-                <h3 className="text-white py-1">
-                  <span className="text-gray-100 capitalize mr-1 mx-5 my-5">All time low:</span>
+                <h3 className="text-white py-1 text-sm md:text-base">
+                  <span className="text-gray-100 capitalize mr-1 mx-5 my-5 ">All time low:</span>
                   {new Intl.NumberFormat("en-US", {
                     style: "currency",
                     currency: currency,
@@ -392,12 +393,12 @@ const CryptoDetails = () => {
               )}
             </div>
           </div>
-        ) : 
-        <div className="w-full min-h-[60vh] h-full flex justify-center items-center">
-        <div className="w-8 h-8 border-4 border-cyan rounded-full border-b-gray-200 animate-spin" role="status" />
-        <span className="ml-2">Please wait...</span>
-      </div>
-        }
+        ) : (
+          <div className="w-full min-h-[60vh] h-full flex justify-center items-center">
+            <div className="w-8 h-8 border-4 border-cyan rounded-full border-b-gray-200 animate-spin" role="status" />
+            <span className="ml-2">Please wait...</span>
+          </div>
+        )}
       </div>
     </div>,
     document.getElementById("modal")

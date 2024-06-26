@@ -13,6 +13,7 @@ module.exports = {
       green: "#25da72",
     },
     fontSize: {
+      xs: "10px",
       sm: "14px",
       md: "18px",
       lg: "24px",

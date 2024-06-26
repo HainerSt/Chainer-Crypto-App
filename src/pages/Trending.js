@@ -13,7 +13,8 @@ const Trending = () => {
 
         <button
           onClick={resetTrendingResult}
-          className=" group absolute right-0 -top-10 w-[2rem] ml-4 hover:scale-110 transition-all transition-ease"
+          className="           group right-0 -top-12 w-[2rem] ml-4 hover:scale-110 transition-all transition-ease
+          absolute"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"

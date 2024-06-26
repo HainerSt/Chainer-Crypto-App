@@ -5,7 +5,7 @@ const Navigation = () => {
   return (
     <nav
       className="
-    w-[40%] mt-16 flex justify-around align-middle
+   xs:w-[80%] md:w-[40%] mt-16 flex justify-around align-middle
     border border-cyan rounded-lg
     "
     >
@@ -16,8 +16,8 @@ const Navigation = () => {
           return `
             ${
               isActive
-                ? `bg-cyan text-gray-300`
-                : `bg-gray-200 text-gray-100  hover:text-cyan active:bg-cyan active:text-gray-300`
+                ? `bg-cyan text-gray-300 px-3`
+                : `bg-gray-200 text-gray-100  hover:text-cyan active:bg-cyan active:text-gray-300 px-3`
             }
             w-full text-base text-center font-nunito m-2.5
             
@@ -33,8 +33,8 @@ const Navigation = () => {
           return `
             ${
               isActive
-                ? `bg-cyan text-gray-300`
-                : `bg-gray-200 text-gray-100  hover:text-cyan active:bg-cyan active:text-gray-300`
+                ? `bg-cyan text-gray-300 px-3`
+                : `bg-gray-200 text-gray-100  hover:text-cyan active:bg-cyan active:text-gray-300 px-3`
             }
             w-full text-base text-center font-nunito m-2.5
             
@@ -50,8 +50,8 @@ const Navigation = () => {
           return `
             ${
               isActive
-                ? `bg-cyan text-gray-300`
-                : `bg-gray-200 text-gray-100  hover:text-cyan active:bg-cyan active:text-gray-300`
+                ? `bg-cyan text-gray-300 px-3`
+                : `bg-gray-200 text-gray-100  hover:text-cyan active:bg-cyan active:text-gray-300 px-3`
             }
             w-full text-base text-center font-nunito m-2.5
             

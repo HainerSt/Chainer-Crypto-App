@@ -118,9 +118,10 @@ const Saved = () => {
                 );
               })}
             </tbody>
-          </table>) :
+          </table>
+        ) : (
           <h1 className="min-h-[60vh] text-lg text-cyan flex items-center justify-center">No data</h1>
-        }
+        )}
 
         <button
           //  Reset

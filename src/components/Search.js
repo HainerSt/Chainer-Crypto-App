@@ -27,12 +27,28 @@ const SearchInput = ({ handleSearch }) => {
 
   return (
     <>
-      <form className="w-90 relative flex items-center ml-8 font-nunito" onSubmit={handleSubmit}>
+      <form
+        className="my-auto md:mt-0 w-100 md:w-30  relative flex items-center ml-5 mr-5 md:ml-8 font-nunito"
+        onSubmit={handleSubmit}
+      >
         <input
           onChange={handleInput}
           value={searchText}
-          className="w-full rounded bg-gray-200 placeholder:text-gray-100 pl-2 required outline-0 border border-transparent focus:border-cyan"
-          placeholder="search here..."
+          className="
+         
+          p-3 md:p-1
+           capitalize w-[100%] 
+           my-3 
+           items-center 
+           rounded
+            bg-gray-200
+           placeholder:text-gray-100 
+             pl-2 required 
+             outline-0 
+             border 
+             border-transparent
+          focus:border-cyan"
+          placeholder="search here ..."
           type="text"
           name="search"
         />
@@ -42,7 +58,7 @@ const SearchInput = ({ handleSearch }) => {
       </form>
 
       {searchText.length > 0 ? (
-        <ul className="absolute top-11 right-0 left-5 w-96 h-96 rounded overflow-x-hidden py-2 bg-gray-200 bg-opacity-60 backdrop-blur-md scrollbar-thin scrollbar-thumb-gray-100 scrollbar-track-gray-200">
+        <ul className=" absolute z-10 top-11 right-0 left-0 md:left-5 w-95 h-96 rounded overflow-x-hidden py-2 bg-gray-200 bg-opacity-60 backdrop-blur-md scrollbar-thin scrollbar-thumb-gray-100 scrollbar-track-gray-200">
           {searchData ? (
             searchData.map((coin) => {
               return (
@@ -57,7 +73,7 @@ const SearchInput = ({ handleSearch }) => {
               );
             })
           ) : (
-            <div className="w-full h-full flex justify-center items-center">
+            <div className="w-full h-full flex justify-center items-center z-5">
               <div className="w-8 h-8 border-4 border-cyan rounded-full border-b-gray-200 animate-spin" role="status" />
               <span className="ml-2">Searching...</span>
             </div>

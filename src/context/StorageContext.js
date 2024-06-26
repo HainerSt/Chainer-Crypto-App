@@ -49,14 +49,13 @@ export const StorageProvider = ({ children }) => {
     getSavedData();
   };
 
-  useEffect(() => {
-    if (allCoins.length > 0) {
-      getSavedData(allCoins);
-      setSavedData();
-    } else {
+  useEffect(()=>{
+    if(allCoins.length > 0 ){
+      getSavedData(allCoins)
       setSavedData();
     }
-  }, [allCoins]);
+
+  },[allCoins])
 
   useLayoutEffect(() => {
     let isThere = JSON.parse(localStorage.getItem("coins")) || false;

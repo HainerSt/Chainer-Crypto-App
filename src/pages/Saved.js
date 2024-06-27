@@ -52,22 +52,22 @@ const Saved = () => {
 
   return (
     <section className="w-[80%] h-full flex flex-col mt-16 mb-24 relative">
-      <div className="w-full min-h-[60vh] py-8 border border-gray-100 rounded">
+      <div className="flex flex-col mt-9 border border-gray-100 rounded">
         {savedData ? (
           <table>
             <thead
               className="capitalize text-base text-gray-100
-                  font-medium border-b border-gray-100"
+        font-medium border-b border-gray-100"
             >
               <tr>
                 <th className=" py-1">asset</th>
                 <th className=" py-1">name</th>
                 <th className=" py-1">price</th>
-                <th className=" py-1">total volume</th>
-                <th className=" py-1">market cap change</th>
-                <th className=" py-1">1h</th>
-                <th className=" py-1">24H</th>
-                <th className=" py-1">7D</th>
+                <th className=" py-1 md:table-cell hidden">total volume</th>
+                <th className=" py-1 sm:table-cell hidden">market cap change</th>
+                <th className=" py-1 lg:table-cell hidden">1h</th>
+                <th className=" py-1 lg:table-cell hidden">24H</th>
+                <th className=" py-1 lg:table-cell hidden">7D</th>
               </tr>
             </thead>
             <tbody>
@@ -97,20 +97,32 @@ const Saved = () => {
                         currency: currency,
                       }).format(data.current_price)}
                     </td>
-                    <td className="py-4">{data.total_volume}</td>
-                    <td className="py-4">{data.market_cap_change_percentage_24h}%</td>
+                    <td className="py-4 md:table-cell hidden">{data.total_volume}</td>
+                    <td className="py-4 sm:table-cell hidden">{data.market_cap_change_percentage_24h}%</td>
                     <td
-                      className={data.price_change_percentage_1h_in_currency > 0 ? "text-green py-4" : "text-red py-4"}
+                      className={
+                        data.price_change_percentage_1h_in_currency > 0
+                          ? "text-green py-4 lg:table-cell hidden"
+                          : "text-red py-4 lg:table-cell hidden"
+                      }
                     >
                       {Number(data.price_change_percentage_1h_in_currency).toFixed(2)}
                     </td>
                     <td
-                      className={data.price_change_percentage_24h_in_currency > 0 ? "text-green py-4" : "text-red py-4"}
+                      className={
+                        data.price_change_percentage_24h_in_currency > 0
+                          ? "text-green py-4 lg:table-cell hidden"
+                          : "text-red py-4 lg:table-cell hidden"
+                      }
                     >
                       {Number(data.price_change_percentage_24h_in_currency).toFixed(2)}
                     </td>
                     <td
-                      className={data.price_change_percentage_7d_in_currency > 0 ? "text-green py-4" : "text-red py-4"}
+                      className={
+                        data.price_change_percentage_7d_in_currency > 0
+                          ? "text-green py-4 lg:table-cell hidden"
+                          : "text-red py-4 lg:table-cell hidden"
+                      }
                     >
                       {Number(data.price_change_percentage_7d_in_currency).toFixed(2)}
                     </td>
@@ -126,7 +138,7 @@ const Saved = () => {
         <button
           //  Reset
           onClick={resetSavedRes}
-          className="           group right-0 -top-12 w-[2rem] ml-4 hover:scale-110 transition-all transition-ease
+          className="group right-0 -top-12 w-[2rem] ml-4 hover:scale-110 transition-all transition-ease
           absolute"
         >
           <svg

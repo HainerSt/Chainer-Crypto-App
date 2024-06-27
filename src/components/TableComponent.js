@@ -58,7 +58,7 @@ const TableComponent = () => {
   "
       >
         {
-          cryptoData && (
+          cryptoData ? (
             <table>
               <thead
                 className="capitalize text-base text-gray-100
@@ -103,11 +103,15 @@ const TableComponent = () => {
                         }).format(data.current_price)}
                       </td>
                       <td className="py-4 md:table-cell hidden">{data.total_volume}</td>
-                      <td className={
-                        data.market_cap_change_percentage_24h > 0
-                        ? "text-green py-4 md-table-cell hidden"
-                        : "text-red py-4 lg:table-cell hidden"
-                      }>{data.market_cap_change_percentage_24h}%</td>
+                      <td
+                        className={
+                          data.market_cap_change_percentage_24h > 0
+                            ? "text-green py-4 md-table-cell hidden"
+                            : "text-red py-4 lg:table-cell hidden"
+                        }
+                      >
+                        {data.market_cap_change_percentage_24h}%
+                      </td>
                       <td
                         className={
                           data.price_change_percentage_1h_in_currency > 0
@@ -140,6 +144,11 @@ const TableComponent = () => {
                 })}
               </tbody>
             </table>
+          ) : (
+            <div className="w-full min-h-[60vh] h-full flex justify-center items-center">
+              <div className="w-8 h-8 border-4 border-cyan rounded-full border-b-gray-200 animate-spin" role="status" />
+              <span className="ml-2">Please wait...</span>
+            </div>
           )
           // : (
           //   <div className="w-full min-h-[60vh] h-full flex justify-center items-center">

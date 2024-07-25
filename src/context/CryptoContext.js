@@ -39,7 +39,7 @@ export const CryptoProvider = ({ children }) => {
         .then((json) => json);
 
       // console.log(data);
-      setTotalPages(data);
+      setTotalPages(100);
     } catch (error) {
       console.log(error);
     }

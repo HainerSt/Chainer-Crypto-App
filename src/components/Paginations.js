@@ -1,6 +1,6 @@
-import React, { useContext, useRef, useState } from "react";
+import React, { useContext, useRef } from "react";
 import paginationArrow from "../assets/pagination-arrow.svg";
-import { set } from "lodash";
+// import { set } from "lodash";
 import { CryptoContext } from "../context/CryptoContext";
 import submitIcon from "../assets/submit-icon.svg";
 
@@ -31,7 +31,7 @@ const PerPage = () => {
         max={250}
       />
       <button type="submit" className="ml-1 cursor-pointer">
-        <img src={submitIcon} className="w-full h-auto" alt="submit"/>
+        <img src={submitIcon} className="w-full h-auto" alt="submit" />
       </button>
     </form>
   );
@@ -49,6 +49,7 @@ const Paginations = () => {
     }
   };
 
+  // PREV PAGE BUTTON
   const prev = () => {
     if (page === 1) {
       return null;
@@ -112,6 +113,7 @@ const Paginations = () => {
             </button>
           </li>
           {page + 1 !== TotalNumber && page !== TotalNumber ? (
+            // NEXT PAGE BUTTON
             <li onClick={next}>
               <button className="outline-0 hover:text-cyan rounded-full w-8 h-8 flex items-center justify-center bg-gray-200 mx-1.5">
                 {page + 1}

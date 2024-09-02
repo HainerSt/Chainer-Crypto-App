@@ -38,7 +38,6 @@ export const StorageProvider = ({ children }) => {
         .then((res) => res.json())
         .then((json) => json);
 
-      console.log(data);
       setSavedData(data);
     } catch (error) {
       console.log(error);
@@ -49,13 +48,12 @@ export const StorageProvider = ({ children }) => {
     getSavedData();
   };
 
-  useEffect(()=>{
-    if(allCoins.length > 0 ){
-      getSavedData(allCoins)
+  useEffect(() => {
+    if (allCoins.length > 0) {
+      getSavedData(allCoins);
       setSavedData();
     }
-
-  },[allCoins])
+  }, [allCoins]);
 
   useLayoutEffect(() => {
     let isThere = JSON.parse(localStorage.getItem("coins")) || false;

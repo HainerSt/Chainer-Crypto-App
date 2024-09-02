@@ -44,7 +44,7 @@ const TrendingCoin = ({ data }) => {
           <img
             src={data.large}
             alt={data.name}
-            className="w-[25%] h-auto rounded-full absolute top-2/4 -right-5 -translate-y-20"
+            className="w-[10%] h-auto rounded-full absolute top-2/4 -right-5 -translate-y-20"
           ></img>
         </div>
       ) : (

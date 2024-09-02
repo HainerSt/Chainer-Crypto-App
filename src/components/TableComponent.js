@@ -99,7 +99,7 @@ const TableComponent = () => {
                       <td className="py-4">
                         {new Intl.NumberFormat("en-US", {
                           style: "currency",
-                          currency: currency,
+                          currency: data.currency,
                         }).format(data.current_price)}
                       </td>
                       <td className="py-4 md:table-cell hidden">{data.total_volume}</td>
@@ -150,6 +150,7 @@ const TableComponent = () => {
               <span className="ml-2">Please wait...</span>
             </div>
           )
+
           // : (
           //   <div className="w-full min-h-[60vh] h-full flex justify-center items-center">
           //     <div className="w-8 h-8 border-4 border-cyan rounded-full border-b-gray-200 animate-spin" role="status" />

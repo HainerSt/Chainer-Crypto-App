@@ -7,12 +7,17 @@ const Filters = () => {
   let { setCurrency, setSortBy, resetFunc } = useContext(CryptoContext);
   const currencyRef = useRef(null);
 
-  const handleCurrencySubmit = (e) => {
-    e.preventDefault();
-    let val = currencyRef.current.value;
+  const handleCurrencyChange = (e) => {
+    const val = e.target.value;
     setCurrency(val);
-    currencyRef.current.value = "";
   };
+
+  // const handleCurrencySubmit = (e) => {
+  //   e.preventDefault();
+  //   let curVal = currencyRef.current.value;
+  //   setCurrency(curVal);
+  //   // currencyRef.current.value = "";
+  // };
 
   const handleSortBy = (e) => {
     e.preventDefault();
@@ -30,7 +35,6 @@ const Filters = () => {
     border-2
   border-gray-100
     rounded-lg  
-
     block
     lg:flex 
     flex-wrap
@@ -41,7 +45,7 @@ const Filters = () => {
       <Search />
       <div className="flex flex-wrap justify-center pb-3 ">
         <form
-          onSubmit={handleCurrencySubmit}
+          onSubmit={handleCurrencyChange}
           className="
            lg:flex 
            items-center 
@@ -64,7 +68,7 @@ const Filters = () => {
           >
             Currency:
           </label>
-          <input
+          {/* <input
             ref={currencyRef}
             className="sm:my-3 my-auto
             w-16 
@@ -82,8 +86,30 @@ const Filters = () => {
             "
             placeholder="usd"
             type="text"
-          />
-          <button type="submit" className="ml-1 cursor-pointer align-middle">
+          /> */}
+          <select
+            onChange={handleCurrencyChange}
+            ref={currencyRef}
+            className="sm:my-3 my-auto
+            w-30
+            rounded
+            bg-gray-200
+            placeholder:text-gray-200 
+            pl-2 
+            pr-10 
+            py-1.5
+            outline-0 
+            border 
+            border-transparent focus:border-cyan 
+            leading-4
+            "
+            defaultValue="usd"
+          >
+            <option value="usd">USD</option>
+            <option value="eur">EUR</option>
+            <option value="ron">RON</option>
+          </select>
+          {/* <button type="submit" className="ml-1 cursor-pointer align-middle">
             <img
               src={SubIcon}
               className="
@@ -93,7 +119,7 @@ const Filters = () => {
             "
               alt="sub-icon"
             />
-          </button>
+          </button> */}
         </form>
         <label className="relative flex justify-center items-center">
           <span className="font-bold mr-2 ">Sort by:</span>

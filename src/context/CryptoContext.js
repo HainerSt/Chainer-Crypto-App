@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { createContext, useLayoutEffect, useState } from "react";
 
 //create context object
@@ -12,7 +13,7 @@ export const CryptoProvider = ({ children }) => {
   const [currency, setCurrency] = useState("usd");
   const [sortBy, setSortBy] = useState("market_cap_desc");
   const [page, setPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(250);
+  const [totalPages, setTotalPages] = useState(20);
   const [perPage, setPerPage] = useState(10);
 
   const getCoinsData = async (coinid) => {
@@ -51,7 +52,6 @@ export const CryptoProvider = ({ children }) => {
         .then((res) => res.json())
         .then((json) => json);
 
-      console.log(data);
       setCryptoData(data);
     } catch (error) {
       console.log(error);
@@ -64,7 +64,6 @@ export const CryptoProvider = ({ children }) => {
         .then((res) => res.json())
         .then((json) => json);
 
-      console.log(data);
       setSearchData(data.coins);
     } catch (error) {
       console.log(error);

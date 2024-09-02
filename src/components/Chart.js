@@ -56,15 +56,12 @@ const Chart = ({ id }) => {
           .then((res) => res.json())
           .then((json) => json);
 
-        console.log("coindata", data);
-
         let convertedData = data[type].map((item) => {
           return {
             date: new Date(item[0]).toLocaleDateString(),
             [type]: item[1],
           };
         });
-        console.log(data);
 
         setChartData(convertedData);
       } catch (error) {

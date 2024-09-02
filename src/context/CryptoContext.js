@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { createContext, useLayoutEffect, useState } from "react";
 
 //create context object
@@ -17,8 +16,7 @@ export const CryptoProvider = ({ children }) => {
   const [perPage, setPerPage] = useState(10);
 
   const getCoinsData = async (coinid) => {
-    //setcoinsdata...
-    setCoinsData();
+    setCoinsData(coinid);
     try {
       const data = await fetch(
         `https://api.coingecko.com/api/v3/coins/${coinid}?localization=false&tickers=false&market_data=true&comunity_data=false&developer_data=true&sparkline=false`
@@ -39,7 +37,7 @@ export const CryptoProvider = ({ children }) => {
         .then((res) => res.json())
         .then((json) => json);
 
-      // console.log(data);
+      console.log(data);
       setTotalPages(100);
     } catch (error) {
       console.log(error);
@@ -75,9 +73,12 @@ export const CryptoProvider = ({ children }) => {
     setCoinSearch("");
   };
 
-  useLayoutEffect(() => {
-    getCryptoData();
-  }, [coinSearch, currency, sortBy, page, perPage]);
+  useLayoutEffect(
+    () => {
+      getCryptoData();
+    }
+    // [coinSearch, currency, sortBy, page, perPage]
+  );
 
   return (
     <CryptoContext.Provider

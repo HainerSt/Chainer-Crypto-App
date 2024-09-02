@@ -1,6 +1,6 @@
 import React, { useContext, useRef } from "react";
 import Search from "./Search";
-import SubIcon from "../assets/submit-icon.svg";
+
 import { CryptoContext } from "../context/CryptoContext";
 
 const Filters = () => {
@@ -107,7 +107,7 @@ const Filters = () => {
           >
             <option value="usd">USD</option>
             <option value="eur">EUR</option>
-            <option value="ron">RON</option>
+            <option value="btc">btc</option>
           </select>
           {/* <button type="submit" className="ml-1 cursor-pointer align-middle">
             <img

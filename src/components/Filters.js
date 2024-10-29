@@ -103,11 +103,11 @@ const Filters = () => {
             border-transparent focus:border-cyan 
             leading-4
             "
-            defaultValue="usd"
+            defaultValue="USD"
           >
-            <option value="usd">USD</option>
-            <option value="eur">EUR</option>
-            <option value="btc">btc</option>
+            <option value="USD">USD</option>
+            <option value="EUR">EUR</option>
+            <option value="BTC">btc</option>
           </select>
           {/* <button type="submit" className="ml-1 cursor-pointer align-middle">
             <img

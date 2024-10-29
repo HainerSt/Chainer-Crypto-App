@@ -1,17 +1,16 @@
 import React, { useContext, useRef } from "react";
 import paginationArrow from "../assets/pagination-arrow.svg";
-// import { set } from "lodash";
 import { CryptoContext } from "../context/CryptoContext";
 import submitIcon from "../assets/submit-icon.svg";
 
-const PerPage = () => {
+function PerPage() {
   const { setPerPage } = useContext(CryptoContext);
   const inputRef = useRef(null);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    let val = inputRef.current.value;
-    if (val !== 0) {
+    let val = parseInt(inputRef.current.value);
+    if (val > 0) {
       setPerPage(val);
       inputRef.current.value = val;
     }
@@ -19,8 +18,8 @@ const PerPage = () => {
 
   return (
     <form onSubmit={handleSubmit} className="relative flex items-center font-nunito mr-12">
-      <label htmlFor="perpage" name="perpage" className="flex justify-center items-center mr-2 font-bold">
-        Per Page:{" "}
+      <label htmlFor="perpage" className="flex justify-center items-center mr-2 font-bold">
+        Per Page:{""}
       </label>
       <input
         ref={inputRef}
@@ -35,43 +34,30 @@ const PerPage = () => {
       </button>
     </form>
   );
-};
+}
 
 const Paginations = () => {
-  let { page, setPage, totalPages, perPage, cryptoData } = useContext(CryptoContext);
+  const { page, setPage, totalPages, perPage, cryptoData } = useContext(CryptoContext);
   const TotalNumber = Math.ceil(totalPages / perPage);
 
   const next = () => {
-    if (page === TotalNumber) {
-      return null;
-    } else {
+    if (page < TotalNumber) {
       setPage(page + 1);
     }
   };
 
-  // PREV PAGE BUTTON
   const prev = () => {
-    if (page === 1) {
-      return null;
-    } else {
+    if (page > 1) {
       setPage(page - 1);
     }
   };
 
   const multiStepNext = () => {
-    if (page + 3 >= TotalNumber) {
-      setPage(TotalNumber - 1);
-    } else {
-      setPage(page + 3);
-    }
+    setPage((prevPage) => (prevPage + 3 >= TotalNumber ? TotalNumber : prevPage + 3));
   };
 
   const multiStepPrev = () => {
-    if (page - 3 <= 1) {
-      setPage(TotalNumber + 1);
-    } else {
-      setPage(page - 2);
-    }
+    setPage((prevPage) => (prevPage - 3 <= 1 ? 1 : prevPage - 3));
   };
 
   if (cryptoData && cryptoData.length >= perPage) {
@@ -84,7 +70,7 @@ const Paginations = () => {
               <img className="w-full h-auto rotate-180" src={paginationArrow} alt="left arrow" />
             </button>
           </li>
-          {page + 1 === TotalNumber || page === TotalNumber ? (
+          {page > 2 && (
             <li>
               <button
                 onClick={multiStepPrev}
@@ -93,36 +79,37 @@ const Paginations = () => {
                 ...
               </button>
             </li>
-          ) : null}
-          {page - 1 !== 0 ? (
+          )}
+          {page > 1 && (
             <li>
               <button
-                onClick={prev}
+                onClick={() => setPage(page - 1)}
                 className="outline-0 hover:text-cyan rounded-full w-8 h-8 flex items-center justify-center bg-gray-200"
               >
                 {page - 1}
               </button>
             </li>
-          ) : null}
+          )}
           <li>
             <button
               disabled
-              className="outline-0  rounded-full w-8 h-8 flex items-center justify-center bg-cyan text-gray-300 mx-1.5"
+              className="outline-0 rounded-full w-8 h-8 flex items-center justify-center bg-cyan text-gray-300 mx-1.5"
             >
               {page}
             </button>
           </li>
-          {page + 1 !== TotalNumber && page !== TotalNumber ? (
-            // NEXT PAGE BUTTON
-            <li onClick={next}>
-              <button className="outline-0 hover:text-cyan rounded-full w-8 h-8 flex items-center justify-center bg-gray-200 mx-1.5">
+          {page < TotalNumber && (
+            <li>
+              <button
+                onClick={() => setPage(page + 1)}
+                className="outline-0 hover:text-cyan rounded-full w-8 h-8 flex items-center justify-center bg-gray-200 mx-1.5"
+              >
                 {page + 1}
               </button>
             </li>
-          ) : null}
-          {page + 1 !== TotalNumber && page !== TotalNumber ? (
+          )}
+          {page < TotalNumber - 1 && (
             <li>
-              {" "}
               <button
                 onClick={multiStepNext}
                 className="outline-0 hover:text-cyan rounded-full w-8 h-8 flex items-center justify-center text-lg"
@@ -130,22 +117,19 @@ const Paginations = () => {
                 ...
               </button>
             </li>
-          ) : null}
-          {page !== TotalNumber ? (
+          )}
+          {page !== TotalNumber && (
             <li>
               <button
-                onClick={() => {
-                  setPage(TotalNumber);
-                }}
+                onClick={() => setPage(TotalNumber)}
                 className="outline-0 hover:text-cyan rounded-full w-8 h-8 flex items-center justify-center bg-gray-200 mx-1.5"
               >
                 {TotalNumber}
               </button>
             </li>
-          ) : null}
+          )}
           <li>
             <button className="outline-0 hover:text-cyan w-8" onClick={next}>
-              {" "}
               <img className="w-full h-auto" src={paginationArrow} alt="right arrow" />
             </button>
           </li>

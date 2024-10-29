@@ -50,6 +50,14 @@ const SaveBtn = ({ data }) => {
 const TableComponent = () => {
   let { cryptoData, currency } = useContext(CryptoContext);
 
+  const currencyFormatter = new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+    notation: "compact",
+    compactDisplay: "short",
+    maximumFractionDigits: 2,
+  });
+
   return (
     <>
       <div
@@ -96,13 +104,8 @@ const TableComponent = () => {
                           {data.name}
                         </Link>
                       </td>
-                      <td className="py-4">
-                        {new Intl.NumberFormat("en-US", {
-                          style: "currency",
-                          currency: currency,
-                        }).format(data.current_price)}
-                      </td>
-                      <td className="py-4 md:table-cell hidden">{data.total_volume}</td>
+                      <td className="py-4">{currencyFormatter.format(data.current_price)}</td>
+                      <td className="py-4 md:table-cell hidden">{currencyFormatter.format(data.total_volume)}</td>
                       <td
                         className={
                           data.market_cap_change_percentage_24h > 0
@@ -110,7 +113,7 @@ const TableComponent = () => {
                             : "text-red py-4 lg:table-cell hidden"
                         }
                       >
-                        {data.market_cap_change_percentage_24h}%
+                        {data.market_cap_change_percentage_24h.toFixed(2)}%
                       </td>
                       <td
                         className={
@@ -119,7 +122,7 @@ const TableComponent = () => {
                             : "text-red py-4 lg:table-cell hidden"
                         }
                       >
-                        {Number(data.price_change_percentage_1h_in_currency).toFixed(2)}
+                        {Number(data.price_change_percentage_1h_in_currency).toFixed(2)}%
                       </td>
                       <td
                         className={
@@ -128,7 +131,7 @@ const TableComponent = () => {
                             : "text-red py-4 lg:table-cell hidden"
                         }
                       >
-                        {Number(data.price_change_percentage_24h_in_currency).toFixed(2)}
+                        {Number(data.price_change_percentage_24h_in_currency).toFixed(2)}%
                       </td>
                       <td
                         className={
@@ -137,7 +140,7 @@ const TableComponent = () => {
                             : "text-red py-4 lg:table-cell hidden"
                         }
                       >
-                        {Number(data.price_change_percentage_7d_in_currency).toFixed(2)}
+                        {Number(data.price_change_percentage_7d_in_currency).toFixed(2)}%
                       </td>
                     </tr>
                   );

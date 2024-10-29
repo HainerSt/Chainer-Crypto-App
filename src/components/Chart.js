@@ -79,7 +79,7 @@ const Chart = ({ id }) => {
         <button
           className={`text-sm py-0 px-1.5 ml-2  bg-opacity-25 rounded ${
             days === 7
-              ? "bg-gray-100 bg-gray-300 border border-cyan"
+              ? "bg-gray-100 text-gray-300 border border-cyan"
               : "bg-gray-300 text-gray-100 border border-gray-100"
           } capitalize`}
           onClick={() => setDays(7)}
@@ -89,7 +89,7 @@ const Chart = ({ id }) => {
         <button
           className={`text-sm py-0.5 px-1.5 ml-2  bg-opacity-25 rounded ${
             days === 14
-              ? "bg-gray-100 bg-gray-300 border border-cyan"
+              ? "bg-gray-100 text-gray-300 border border-cyan"
               : " bg-gray-300 text-gray-100 border border-gray-100"
           } capitalize`}
           onClick={() => setDays(14)}
@@ -99,7 +99,7 @@ const Chart = ({ id }) => {
         <button
           className={`text-sm py-0.5 px-1.5 ml-2 bg-opacity-25  rounded ${
             days === 30
-              ? "bg-gray-100 bg-gray-300 border border-cyan"
+              ? "bg-gray-100 text-gray-300 border border-cyan"
               : " bg-gray-300 text-gray-100 border border-gray-100"
           } capitalize`}
           onClick={() => setDays(30)}

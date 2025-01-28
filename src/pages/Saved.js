@@ -98,7 +98,7 @@ const Saved = () => {
                       }).format(data.current_price)}
                     </td>
                     <td className="py-4 md:table-cell hidden">{data.total_volume}</td>
-                    <td className="py-4 sm:table-cell hidden">{data.market_cap_change_percentage_24h}%</td>
+                    <td className="py-4 sm:table-cell hidden">{data.market_cap}%</td>
                     <td
                       className={
                         data.price_change_percentage_1h_in_currency > 0
